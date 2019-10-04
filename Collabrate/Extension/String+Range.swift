@@ -49,21 +49,8 @@ extension String {
 }
 
 extension String {
-  func sanitiseAsPhoneNumber() -> String {
-    guard count == fullFormattedPhoneNumberCount && self[...3] == numberPrefix else {
-      fatalError("error: invalid number passed to request!")
-    }
-    
-    let output = self[4...].replacingOccurrences(of: " ", with: "")
-    assert(output.count == 11)
-    
-    return output
-  }
-}
-
-extension String {
   func numberToUpperCharacter() -> String {
-    let idx = String(UnicodeScalar("A")!.value + UInt32(self)! - 1)
+    let idx = String(UnicodeScalar("A").value + UInt32(self)! - 1)
     return String(UnicodeScalar(Int(idx)!)!)
   }
 }

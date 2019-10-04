@@ -6,7 +6,7 @@
 //  Copyright © 2018 Smarock. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIView {
   var firstResponder: UIView? {

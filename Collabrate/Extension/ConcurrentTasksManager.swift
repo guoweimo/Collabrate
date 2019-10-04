@@ -8,6 +8,9 @@
 
 import Foundation
 
+typealias Action = () -> ()
+typealias AsyncAction = (Action) -> ()
+
 class ConcurrentTasksManager: NSObject {
   
   private let serialQueue: DispatchQueue
@@ -22,7 +25,7 @@ class ConcurrentTasksManager: NSObject {
   
   func enqueue(ayncTask: @escaping AsyncAction) {
     serialQueue.async {
-      self.semaphore.wait(timeout: .distantFuture)
+      _ = self.semaphore.wait(timeout: .distantFuture)
       self.tasksCount += 1
       print("tasksCount: \(self.tasksCount)")
       self.concurrentQueue.async {

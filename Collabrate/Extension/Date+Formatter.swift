@@ -14,47 +14,6 @@ extension Date {
     formatter.dateFormat = "yyyy-MM-dd EEE HH:mm"
     return formatter.string(from: self)
   }
-    
-  func displayRefrenceDate() -> String {
-    let isToday = Calendar.current.isDateInToday(self)
-    let isYesterday = Calendar.current.isDateInYesterday(self)
-    let isTomorrow = Calendar.current.isDateInTomorrow(self)
-    let formatter = LocalDateFormatter()
-    
-    if isToday {
-      formatter.dateFormat = "HH:mm"
-      return DisplayString.General.Date.today + " " + formatter.string(from: self)
-    }
-    if isYesterday {
-      formatter.dateFormat = "HH:mm"
-      return DisplayString.General.Date.yesterday + " " + formatter.string(from: self)
-    }
-    
-    if isTomorrow {
-      formatter.dateFormat = "HH:mm"
-      return DisplayString.General.Date.tomorrow + " " + formatter.string(from: self)
-    }
-    formatter.dateFormat = "MMM dd HH:mm"
-    return formatter.string(from: self)
-  }
-  
-  func displayTimeDiff() -> String {
-    let delta = Int(Date().timeIntervalSince(self))
-    if delta < 60 {
-      return DisplayString.General.Date.justNow
-    } else if delta < 3600 {
-      let min = delta / 60
-      return DisplayString.General.Date.minsAgo(with: min)
-    } else if delta < 3600 * 24 {
-      let hour = delta / 3600
-      return DisplayString.General.Date.hoursAgo(with: hour)
-    } else if delta < 3600 * 24 * 7 {
-      let day = delta / (3600 * 24)
-      return DisplayString.General.Date.daysAgo(with: day)
-    } else {
-      return displayDateAndTime()
-    }
-  }
   
   func displaySlotTime(with duration: TimeInterval = 2400) -> String {
     let formatter = DateFormatter()
@@ -128,75 +87,5 @@ extension Date {
   
   static var today: Date {
     return Date()
-  }
-  
-  func next(_ weekday: Weekday, considerToday: Bool = false) -> Date {
-    return get(.Next,
-               weekday,
-               considerToday: considerToday)
-  }
-  
-  func previous(_ weekday: Weekday, considerToday: Bool = false) -> Date {
-    return get(.Previous,
-               weekday,
-               considerToday: considerToday)
-  }
-  
-  func get(_ direction: SearchDirection,
-           _ weekDay: Weekday,
-           considerToday consider: Bool = false) -> Date {
-    
-    let dayName = weekDay.rawValue
-    
-    let weekdaysName = getWeekDaysInEnglish().map { $0.lowercased() }
-    
-    assert(weekdaysName.contains(dayName), "weekday symbol should be in form \(weekdaysName)")
-    
-    let searchWeekdayIndex = weekdaysName.index(of: dayName)! + 1
-    
-    let calendar = Calendar(identifier: .gregorian)
-    
-    if consider && calendar.component(.weekday, from: self) == searchWeekdayIndex {
-      return self
-    }
-    
-    var nextDateComponent = DateComponents()
-    nextDateComponent.weekday = searchWeekdayIndex
-    
-    
-    let date = calendar.nextDate(after: self,
-                                 matching: nextDateComponent,
-                                 matchingPolicy: .nextTime,
-                                 direction: direction.calendarSearchDirection)
-    
-    return date!
-  }
-  
-}
-
-// MARK: Helper methods
-extension Date {
-  func getWeekDaysInEnglish() -> [String] {
-    var calendar = Calendar(identifier: .gregorian)
-    calendar.locale = Locale(identifier: "en_US_POSIX")
-    return calendar.weekdaySymbols
-  }
-  
-  enum Weekday: String {
-    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
-  }
-  
-  enum SearchDirection {
-    case Next
-    case Previous
-    
-    var calendarSearchDirection: Calendar.SearchDirection {
-      switch self {
-      case .Next:
-        return .forward
-      case .Previous:
-        return .backward
-      }
-    }
   }
 }

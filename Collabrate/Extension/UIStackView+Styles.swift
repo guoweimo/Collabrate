@@ -34,7 +34,7 @@ extension UIStackView {
 
 extension UIStackView {
   func insertArrangedSubview(_ view: UIView, after aView: UIView) {
-    if let index = arrangedSubviews.index(of: aView) {
+    if let index = arrangedSubviews.firstIndex(of: aView) {
       insertArrangedSubview(view, at: index + 1)
     }
   }

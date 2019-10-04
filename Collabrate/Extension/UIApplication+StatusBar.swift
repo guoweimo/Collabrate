@@ -6,7 +6,7 @@
 //  Copyright © 2019 Smarock. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIApplication {
   var statusBarView: UIView? {

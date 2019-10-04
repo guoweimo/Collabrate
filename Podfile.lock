@@ -1,0 +1,62 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - LeanCloud (16.5.1):
+    - LeanCloud/IM (= 16.5.1)
+    - LeanCloud/Storage (= 16.5.1)
+  - LeanCloud/IM (16.5.1):
+    - FMDB (~> 2.7.0)
+    - LeanCloud/Storage
+    - Starscream (~> 3.1.0)
+    - SwiftProtobuf (~> 1.6.0)
+  - LeanCloud/Storage (16.5.1):
+    - Alamofire (~> 4.8.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - Starscream (3.1.0)
+  - SwiftProtobuf (1.6.0)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - LeanCloud
+  - RxCocoa
+  - RxSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Crashlytics
+    - Fabric
+    - FMDB
+    - LeanCloud
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Starscream
+    - SwiftProtobuf
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  LeanCloud: 95885dab9edda56e36ca0f85dff73051830834b2
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
+  SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
+
+PODFILE CHECKSUM: 24c3d382168eb831b846bb59cd23329f48195c89
+
+COCOAPODS: 1.8.0

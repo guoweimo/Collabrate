@@ -12,6 +12,7 @@ import LeanCloud
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
+  var window: UIWindow?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
@@ -24,8 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } catch {
       fatalError("\(error)")
     }
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = container
+    window?.makeKeyAndVisible()
+    
     return true
   }
   
 }
-
